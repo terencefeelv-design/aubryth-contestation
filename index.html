@@ -1,286 +1,400 @@
-
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dossier Groupe Mutuel — Analyse chronologique des paiements</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dossier Groupe Mutuel — Analyse chronologique des paiements</title>
 
-<style>
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background:#f7f7f7;
-    color:#1f1f1f;
-    line-height:1.6;
-    margin:0;
-    padding:40px;
-}
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f7f7;
+            color: #1f1f1f;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px;
+        }
 
-.container{
-    max-width:1200px;
-    margin:auto;
-    background:white;
-    padding:50px;
-    box-shadow:0 0 25px rgba(0,0,0,0.08);
-}
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            padding: 50px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+        }
 
-h1{
-    font-size:42px;
-    margin-bottom:5px;
-}
+        h1 {
+            font-size: 42px;
+            margin-bottom: 5px;
+        }
 
-h2{
-    margin-top:50px;
-    border-left:8px solid #e83278;
-    padding-left:15px;
-}
+        h2 {
+            margin-top: 50px;
+            border-left: 8px solid #e83278;
+            padding-left: 15px;
+        }
 
-.subtitle{
-    font-size:20px;
-    color:#666;
-    margin-bottom:40px;
-}
+        .subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 40px;
+        }
 
-.warning{
-    border:3px solid #e83278;
-    padding:25px;
-    background:#fff8fb;
-    margin-top:30px;
-}
+        .warning {
+            border: 3px solid #e83278;
+            padding: 25px;
+            background: #fff8fb;
+            margin-top: 30px;
+        }
 
-.stats{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-    margin:40px 0;
-}
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
 
-.card{
-    background:#fafafa;
-    border:1px solid #e2e2e2;
-    padding:25px;
-    text-align:center;
-}
+        .card {
+            background: #fafafa;
+            border: 1px solid #e2e2e2;
+            padding: 25px;
+            text-align: center;
+        }
 
-.card .value{
-    font-size:38px;
-    font-weight:700;
-    color:#00a6d6;
-}
+        .card .value {
+            font-size: 38px;
+            font-weight: 700;
+            color: #00a6d6;
+        }
 
-.card .label{
-    color:#666;
-}
+        .card .label {
+            color: #666;
+        }
 
-img{
-    width:100%;
-    margin:30px 0;
-    border:1px solid #ddd;
-}
+        img {
+            width: 100%;
+            margin: 30px 0;
+            border: 1px solid #ddd;
+        }
 
-ul{
-    padding-left:22px;
-}
+        ul {
+            padding-left: 22px;
+        }
 
-.highlight{
-    color:#e83278;
-    font-weight:700;
-}
+        .highlight {
+            color: #e83278;
+            font-weight: 700;
+        }
 
-.footer{
-    margin-top:50px;
-    padding-top:25px;
-    border-top:1px solid #ddd;
-    font-size:14px;
-    color:#666;
-}
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid #ddd;
+            font-size: 14px;
+            color: #666;
+        }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:30px;
-    font-size:14px;
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            font-size: 14px;
+        }
 
-th, td{
-    border:1px solid #ddd;
-    padding:10px;
-    text-align:left;
-}
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
 
-th{
-    background:#f2f2f2;
-}
-</style>
+        th {
+            background: #f2f2f2;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .proof-grid figure {
+            margin: 0;
+        }
+
+        .proof-grid img {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .proof-grid figcaption {
+            font-size: 14px;
+            color: #666;
+            margin-top: 8px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-<h1>Dossier de contestation — Groupe Mutuel</h1>
-<div class="subtitle">
-Analyse chronologique des paiements, rappels et incohérences administratives potentielles
-</div>
+        <h1>Dossier de contestation — Groupe Mutuel</h1>
+        <div class="subtitle">
+            Analyse chronologique des paiements, rappels et incohérences administratives potentielles
+        </div>
+
+        <h2>Position du dossier</h2>
+
+        <p>
+            Ce document fait suite aux rappels et frais de sommation contestés reçus malgré la présence de paiements
+            mensuels récurrents visibles sur le relevé bancaire.
+        </p>
+
+        <p>
+            Après plusieurs appels téléphoniques et différentes procédures suivies conformément aux instructions
+            communiquées, les anomalies persistent.
+            L’objectif de ce dossier n’est pas d’affirmer une surfacturation certaine, mais de démontrer l’existence
+            possible d’un problème d’imputation, de suivi administratif ou de synchronisation des paiements.
+        </p>
+
+        <p>
+            Le point central est simple :
+            <span class="highlight">
+                des paiements réguliers apparaissent de manière continue sur plusieurs années, tandis que des rappels et
+                sommations continuent malgré cela à être générés.
+            </span>
+        </p>
+   
+
+        <h2>Déclencheur du présent dossier</h2>
+
+        <p>
+            Le présent dossier fait directement suite à une <strong>sommation pour primes impayées</strong> datée du
+            <strong>27 mai 2026</strong>, adressée à Madame <strong>Thérèse Aubry</strong>.
+        </p>
+
+        <ul>
+            <li><strong>N° partenaire :</strong> 2402440</li>
+            <li><strong>N° de facture :</strong> 682813009</li>
+            <li><strong>N° de sommation :</strong> 698859959</li>
+            <li><strong>Période réclamée :</strong> 01.03.2026 – 31.03.2026</li>
+            <li><strong>Prime réclamée :</strong> CHF 41.00</li>
+            <li><strong>Frais de sommation :</strong> CHF 30.00</li>
+            <li><strong>Montant total demandé :</strong> CHF 71.00, payable avant le 10 juin 2026</li>
+        </ul>
+
+        <p>
+            Or, le relevé bancaire montre précisément pour mars 2026 plusieurs paiements à destination de Groupe Mutuel,
+            dont des paiements de CHF 41.00. C’est donc cette sommation, et en particulier les frais de CHF 30.00,
+            qui motive la présente contestation.
+        </p>
+
+        <section class="warning">
+            <h2>Élément complémentaire — paiements janvier et février 2026</h2>
+
+            <p>
+                À la suite de notre appel téléphonique avec Groupe Mutuel du 29 Mai 26 à 16h, il nous a été indiqué que les paiements de
+                <strong>janvier 2026</strong> et <strong>février 2026</strong> n’apparaissaient pas dans leurs systèmes
+                internes.
+            </p>
+
+            <p>
+               Les captures ci-dessous documentent les
+                paiements correspondants à janvier et février, chacun d’un montant de
+                <strong>CHF 41.00</strong>, avec la même référence de paiement. Si la même reference pour deux paiements
+                à induits une interference dans votre systèmes il en resulte donc des excédents à injecter aux mois qui
+                suivent.
+            </p>
+
+            <ul>
+                <li><strong>Janvier 2026 :</strong> paiement CHF 41.00 exécuté le 30.01.2026</li>
+                <li><strong>Février 2026 :</strong> paiement CHF 41.00 exécuté le 27.02.2026</li>
+            </ul>
 
 
-<h2>Déclencheur du présent dossier</h2>
+            <div class="proof-grid">
+                <figure>
+                    <img src="img/ref%20janvier%202026.png" alt="Preuve paiement Groupe Mutuel janvier 2026">
+                    <figcaption>Paiement janvier 2026 — CHF 41.00</figcaption>
+                </figure>
 
-<p>
-Le présent dossier fait directement suite à une <strong>sommation pour primes impayées</strong> datée du
-<strong>27 mai 2026</strong>, adressée à Madame <strong>Thérèse Aubry</strong>.
-</p>
+                <figure>
+                    <img src="img/ref%20fevrier%202026.png" alt="Preuve paiement Groupe Mutuel février 2026">
+                    <figcaption>Paiement février 2026 — CHF 41.00</figcaption>
+                </figure>
+            </div>
 
-<ul>
-<li><strong>N° partenaire :</strong> 2402440</li>
-<li><strong>N° de facture :</strong> 682813009</li>
-<li><strong>N° de sommation :</strong> 698859959</li>
-<li><strong>Période réclamée :</strong> 01.03.2026 – 31.03.2026</li>
-<li><strong>Prime réclamée :</strong> CHF 41.00</li>
-<li><strong>Frais de sommation :</strong> CHF 30.00</li>
-<li><strong>Montant total demandé :</strong> CHF 71.00, payable avant le 10 juin 2026</li>
-</ul>
+            <div class="proof-full">
+                <figure>
+                    <img src="img/Relevé annuel 2026.png" alt="Relevé Raiffeisen 2026 Groupe Mutuel">
+                    <figcaption>
+                        Relevé Raiffeisen filtré « groupe mutuel » — confirmation chronologique des paiements janvier à
+                        mai 2026.
+                    </figcaption>
+                </figure>
+            </div>
 
-<p>
-Or, le relevé bancaire montre précisément pour mars 2026 plusieurs paiements à destination de Groupe Mutuel,
-dont des paiements de CHF 41.00. C’est donc cette sommation, et en particulier les frais de CHF 30.00,
-qui motive la présente contestation.
-</p>
+            <p>
+                Ce relevé exporté directement depuis Raiffeisen confirme la présence des paiements suivants dans
+                l’historique bancaire :
+            </p>
 
-<p>
-La contestation porte principalement sur la cohérence administrative du dossier :
-<strong>si le paiement de mars 2026 est visible dans les transactions bancaires, il doit être expliqué pourquoi une sommation pour cette même période a tout de même été émise.</strong>
-</p>
+            <ul>
+                <li>30.01.2026 — CHF 41.00</li>
+                <li>27.02.2026 — CHF 41.00</li>
+                <li>03.03.2026 — CHF 41.00 ×2 (rappels)</li>
+                <li>27.03.2026 — CHF 41.00</li>
+                <li>27.04.2026 — CHF 41.00</li>
+                <li>27.05.2026 — CHF 41.00</li>
+            </ul>
 
-<h2>Position du dossier</h2>
+            <p>
+                Ce document vient compléter les captures individuelles précédentes et démontre que les paiements de
+                janvier et février 2026 existaient bien dans l’historique bancaire au moment de l’export.
+                <br>
+            </p>
+        </section>
 
-<p>
-Ce document fait suite aux rappels et frais de sommation contestés reçus malgré la présence de paiements mensuels récurrents visibles sur le relevé bancaire.
-</p>
+<hr>
+<h1>Aperçu des comptes</h1>
 
-<p>
-Après plusieurs appels téléphoniques et différentes procédures suivies conformément aux instructions communiquées, les anomalies persistent. 
-L’objectif de ce dossier n’est pas d’affirmer une surfacturation certaine, mais de démontrer l’existence possible d’un problème d’imputation, de suivi administratif ou de synchronisation des paiements.
-</p>
 
-<p>
-Le point central est simple :
-<span class="highlight">
-des paiements réguliers apparaissent de manière continue sur plusieurs années, tandis que des rappels et sommations continuent malgré cela à être générés.
-</span>
-</p>
+        <div class="warning">
 
-<div class="warning">
+            <h3>Contexte important concernant les montants observés</h3>
 
-<h3>Contexte important concernant les montants observés</h3>
+            <p>
+                - Les montants d’environ CHF 15.30 visibles sur de nombreuses périodes correspondent fréquemment à la
+                prime du fils :
+                <strong>Térence Michel Mebenga Bidima</strong>.
+            </p>
 
-<p>
-Les montants d’environ CHF 15.30 visibles sur de nombreuses périodes correspondent fréquemment à la prime du fils :
-<strong>Térence Michel Mebenga Bidima</strong>.
-</p>
+            <p>
+                - La période allant de septembre 2022 à mai 2024 inclut également la prime du mari :
+                <strong>Jacques Aubry</strong>.
+            </p>
 
-<p>
-La période allant de septembre 2022 à mai 2024 inclut également la prime du mari :
-<strong>Jacques Aubry</strong>.
-</p>
+            <p>
+                - Le décès de Jacques Aubry en mai 2024 explique  une partie importante de la diminution
+                progressive des montants observés :
+            </p>
 
-<p>
-Le décès de Jacques Aubry en mai 2024 explique vraisemblablement une partie importante de la diminution progressive des montants observés :
-</p>
+            <ul>
+                <li>≈ CHF 72.90</li>
+                <li>≈ CHF 56.30</li>
+                <li>≈ CHF 41.00</li>
+            </ul>
 
-<ul>
-<li>≈ CHF 72.90</li>
-<li>≈ CHF 56.30</li>
-<li>≈ CHF 41.00</li>
-</ul>
+            <p>
+                - Le contrat du fils ayant ensuite été résilié en novembre 2025, cela explique le retour à une base proche
+                de CHF 41.00 pour Madame Thérèse Aubry.
+            </p>
 
-<p>
-Le contrat du fils ayant ensuite été résilié en novembre 2025, cela explique le retour à une base proche de CHF 41.00 pour Madame Thérèse Aubry.
-</p>
+        </div>
 
-</div>
+        <div class="stats">
 
-<div class="stats">
+            <div class="card">
+                <div class="value">45</div>
+                <div class="label">mois observés</div>
+            </div>
 
-<div class="card">
-<div class="value">45</div>
-<div class="label">mois observés</div>
-</div>
+            <div class="card">
+                <div class="value">36</div>
+                <div class="label">N = mois au-dessus de CHF 41.00</div>
+            </div>
 
-<div class="card">
-<div class="value">36</div>
-<div class="label">N = mois au-dessus de CHF 41.00</div>
-</div>
+            <div class="card">
+                <div class="value">CHF 960.70</div>
+                <div class="label">écart hypothétique cumulé</div>
+            </div>
 
-<div class="card">
-<div class="value">CHF 960.70</div>
-<div class="label">écart hypothétique cumulé</div>
-</div>
+            <div class="card">
+                <div class="value">CHF 2805.70</div>
+                <div class="label">total payé observé</div>
+            </div>
 
-<div class="card">
-<div class="value">CHF 2805.70</div>
-<div class="label">total payé observé</div>
-</div>
+        </div>
 
-</div>
+        <h2>Visualisation chronologique</h2>
 
-<h2>Visualisation chronologique</h2>
+        <p>
+            Les graphiques ci-dessous utilisent une base hypothétique prudente de CHF 41.00 afin de visualiser les
+            écarts observés au fil du temps.
+        </p>
 
-<p>
-Les graphiques ci-dessous utilisent une base hypothétique prudente de CHF 41.00 afin de visualiser les écarts observés au fil du temps.
-</p>
+        <img src="img/groupe_mutuel_excess_chart.png" alt="Visualisation des paiements">
 
+<<<<<<< HEAD
 <img src="img/groupe_mutuel_excess_chart.png" alt="Visualisation des paiements">
 
 <img src="img/groupe_mutuel_excess_violet.png" alt="Visualisation des excédents hypothétiques">
+=======
+        <img src="img/groupe_mutuel_excess_violet.png" alt="Visualisation des excédents hypothétiques">
 
-<p>
-<strong>N = 36</strong> représente le nombre de mois où le montant visible dépasse la base hypothétique de CHF 41.00.
-Ce chiffre ne représente pas une somme monétaire.
-</p>
+        <p>
+            <strong>N = 36</strong> représente le nombre de mois où le montant visible dépasse la base hypothétique de
+            CHF 41.00.
+            Ce chiffre ne représente pas une somme monétaire.
+        </p>
+>>>>>>> f17e034 (feat: add 2026annual + jan&feb26 account state)
 
-<h2>Constats exploitables</h2>
+        <h2>Constats exploitables</h2>
 
-<ul>
-<li>La période visible est continue de septembre 2022 à mai 2026.</li>
-<li>Des paiements récurrents apparaissent chaque mois sans interruption majeure visible.</li>
-<li>Des rappels et sommations apparaissent malgré ces paiements réguliers.</li>
-<li>Le mois de mars 2026 affiche CHF 123.00 de paiements visibles sur un seul mois.</li>
-<li>Décembre 2025 et mars 2026 constituent les anomalies les plus importantes.</li>
-<li>Les montants évoluent dans le temps de manière cohérente avec les changements familiaux et contractuels connus.</li>
-</ul>
+        <ul>
+            <li>La période visible est continue de septembre 2022 à mai 2026.</li>
+            <li>Des paiements récurrents apparaissent chaque mois sans interruption majeure visible.</li>
+            <li>Des rappels et sommations apparaissent malgré ces paiements réguliers.</li>
+            <li>Le mois de mars 2026 affiche CHF 123.00 de paiements visibles sur un seul mois.</li>
+            <li>Décembre 2025 et mars 2026 constituent les anomalies les plus importantes.</li>
+            <li>Les montants évoluent dans le temps de manière cohérente avec les changements familiaux et contractuels
+                connus.</li>
+        </ul>
 
-<h2>Demande formelle</h2>
+        <h2>Demande formelle</h2>
 
-<p>
-Nous demandons une explication écrite, détaillée et vérifiable concernant :
-</p>
+        <p>
+            Nous demandons une explication écrite, détaillée et vérifiable concernant :
+        </p>
 
-<ul>
-<li>l’imputation de chaque paiement ;</li>
-<li>les rappels et sommations émis malgré les paiements visibles ;</li>
-<li>les changements de montants observés ;</li>
-<li>les éventuelles erreurs d’attribution, de référence ou de rattachement de contrat.</li>
-</ul>
+        <ul>
+            <li>l’imputation de chaque paiement ;</li>
+            <li>les rappels et sommations émis malgré les paiements visibles ;</li>
+            <li>les changements de montants observés ;</li>
+            <li>les éventuelles erreurs d’attribution, de référence ou de rattachement de contrat.</li>
+        </ul>
 
-<p>
-Nous demandons également :
-</p>
+        <p>
+            Nous demandons également :
+        </p>
 
-<ul>
-<li>le décompte complet du contrat depuis septembre 2022 ;</li>
-<li>la justification détaillée de chaque rappel et sommation, en particulier la sommation n° 698859959 du 27 mai 2026 ;</li>
-<li>l’annulation des frais de sommation de CHF 30.00 si le paiement de mars 2026 a bien été reçu ou mal imputé ;</li>
-<li>la correction des rappels injustifiés ;</li>
-<li>le remboursement de tout montant payé en trop si l’examen le confirme.</li>
-</ul>
+        <ul>
+            <li>le décompte complet du contrat depuis septembre 2022 ;</li>
+            <li>la justification détaillée de chaque rappel et sommation, en particulier la sommation n° 698859959 du 27
+                mai 2026 ;</li>
+            <li>l’annulation des frais de sommation de CHF 30.00 si le paiement de mars 2026 a bien été reçu ou mal
+                imputé ;</li>
+            <li>la correction des rappels injustifiés ;</li>
+            <li>le remboursement de tout montant payé en trop si l’examen le confirme.</li>
+        </ul>
 
-<div class="footer">
-Document de travail généré à partir du relevé Raiffeisen filtré « groupe mutuel ».
-Les montants doivent être confrontés aux contrats, factures, rappels et sommations officiels avant toute demande chiffrée définitive.
-</div>
+        <div class="footer">
+            Document de travail généré à partir du relevé Raiffeisen filtré « groupe mutuel ».
+            Les montants doivent être confrontés aux contrats, factures, rappels et sommations officiels avant toute
+            demande chiffrée définitive.
+        </div>
 
-</div>
+    </div>
 
 </body>
+<<<<<<< HEAD
 </html>
+=======
+
+</html>
+>>>>>>> f17e034 (feat: add 2026annual + jan&feb26 account state)
